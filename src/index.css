@@ -1,0 +1,187 @@
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  display:grid;
+  align-items: center;
+  background-image: url("https://wallpapercave.com/wp/wp2725712.jpg");
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+
+.square {
+  background: rgb(156, 151, 151);
+  border: 1px solid #000;
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.fill {
+  background: #000;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.board {
+  display: grid;
+}
+
+.contenidoHorizontal {
+  display: flex;
+  flex-direction: row;
+}
+
+.divisionInterna {
+  display: flex;
+  flex-direction: column;
+}
+
+.pistasFilas {
+  display: grid;
+  margin-right: 5px;
+  grid-template-rows: repeat(10, 30px);
+  grid-template-columns: 50px;
+}
+
+.pistasColumnas {
+  display: grid;
+  margin-left: 55px;
+  margin-bottom: 5px;
+  grid-template-columns: repeat(10, 30px);
+  grid-template-rows: 50px;
+}
+
+.pista {
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  align-items: center;
+  background: #79afee;
+  border-radius: 10px;
+  border: 1px solid #000;
+  color: #000;
+}
+
+.pistaPintada{
+  background: #e2afe2;
+}
+
+.optionPaint {
+  border: 1px solid #000;
+  width:30px;
+  height:30px;
+  background: #79afee;
+  color:#79afee; 
+  border-radius: 4px;
+}
+
+.optionPaint:hover {
+  border: 1px solid #79afee;
+  background: #79afee; 
+  color:#000;
+}
+
+.optionMark {
+  border: 1px solid #000;
+  width:30px;
+  height:30px;
+  background: #000; 
+  font-size: 24px;
+  color:#79afee;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.optionMark:hover {
+  border: 1px solid #79afee;
+  background: #79afee; 
+  color:#000;
+}
+
+.opcionPista {
+  border: 1px solid #000;
+  width:65px;
+  height:30px;
+  align-items:center;
+  background: #79afee;
+  color:#000000;
+  margin-right: 20px;
+  border-radius: 4px;
+}
+
+.opcionPista:hover {
+  border: 1px solid #79afee;
+  background: #79afee; 
+  color:#000;
+}
+
+.opcionSolucion {
+  border: 1px solid #000;
+  width:65px;
+  height:30px;
+  align-items:center;
+  background: #79afee;
+  color:#000000;
+  margin-left: 20px;
+  border-radius: 4px;
+}
+
+.opcionSolucion:hover {
+  border: 1px solid #79afee;
+  background: #79afee; 
+  color:#000;
+}
+
+.deshabilitado {
+  background: #999;
+  color:#000;
+}
+
+.game {
+  margin-top: 100px;
+  display: flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.opciones {
+  display: flex;
+  flex-direction:column;
+}
+
+.botones {
+  display: flex;
+  flex-direction:row;
+  margin-top: 5px;
+  margin-left: 36px;
+}
+
+.gameInfo {
+  margin-top: 5px;
+  font-size: 20px;
+}
+
+.tituloJuego {
+  display: flex;
+  flex-direction:column;
+  align-items:center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 50px;
+}
+
+.botonesAyuda {
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  margin-right: 20px;
+}
+
+.textoSimple {
+  font-size: 15px;
+}
