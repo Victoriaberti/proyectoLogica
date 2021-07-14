@@ -55,11 +55,14 @@ class Game extends React.Component {
 
   handleClick(i, j) {
     // No action on click if we are waiting.
-    if (this.state.waiting || this.state.seleccion === 'S') {
+    const selActual = this.state.seleccion;
+    if (this.state.waiting || selActual === 'S') {
       return;
     }
-    let marca = this.state.seleccion === 'P' ? '"'+this.state.grillaResuelta[i][j]+'"' : '"'+this.state.seleccion+'"';
-    console.log("marca",this.state.marcado); 
+    if(selActual === 'P' && this.state.grid[i][j] !== "_") {
+      return;
+    }
+    let marca = selActual === "P" ? '"'+this.state.grillaResuelta[i][j]+'"' : '"'+selActual+'"';
     // Build Prolog query to make the move, which will look as follows:
     // put("#",[0,1],[], [],[["X",_,_,_,_],["X",_,"X",_,_],["X",_,_,_,_],["#","#","#",_,_],[_,_,"#","#","#"]], GrillaRes, FilaSat, ColSat)
     const squaresS = JSON.stringify(this.state.grid).replaceAll('"_"', "_"); // Remove quotes for variables.
@@ -97,13 +100,6 @@ class Game extends React.Component {
     });
   }
 
-  mostrarSolucion() {
-    this.setState({
-      waiting : true,
-      estadoDelJuego : 'Juego en pausa'
-    })
-  }
-
   cumpleCondicion(valor) {
     return valor === true;
   }
@@ -111,10 +107,10 @@ class Game extends React.Component {
   handleClickOption(valor) {
     if(valor === 'S') {
       this.setState({
+        waiting : true,
         mostrandoSolucion : true,
-        waiting : true
+        estadoDelJuego : 'Juego en pausa'
       })
-      this.mostrarSolucion()
     }
     else {
       this.setState({
@@ -139,15 +135,16 @@ class Game extends React.Component {
     const marcar = marcado === 'X' ? 'optionMark' : 'optionMark deshabilitado';
     const pista = marcado === 'P' ? 'opcionPista' : 'opcionPista deshabilitado';
     const solucion = marcado === 'S' ? 'opcionSolucion' : 'opcionSolucion deshabilitado';
+    var estadoBotones = this.state.estadoDelJuego === 'Juego ganado!';
     return (
         <div className = "game">
           <div className = "tituloJuego">
             {'NONOGRAMA'}
             <div className = 'botonesAyuda'>
-              <button className = {pista} onClick = {() => this.handleClickOption('P')}>
+              <button className = {pista} disabled = {estadoBotones} onClick = {() => this.handleClickOption('P')}>
                 {'Pista'}
               </button>
-              <button className = {solucion} onClick = {() => this.handleClickOption('S')}>
+              <button className = {solucion} disabled = {estadoBotones} onClick = {() => this.handleClickOption('S')}>
                 {'Solucion'}
               </button>
             </div>
@@ -167,10 +164,10 @@ class Game extends React.Component {
               {this.state.estadoDelJuego}
             </div>
             <div className = "botones">
-              <button className = {pintar} onClick = {() => this.handleClickOption('#')}>
+              <button className = {pintar} disabled = {estadoBotones} onClick = {() => this.handleClickOption('#') }>
                 {' '}
               </button>
-              <button className = {marcar} onClick = {() => this.handleClickOption('X')}>
+              <button className = {marcar} disabled = {estadoBotones} onClick = {() => this.handleClickOption('X')}>
                 {'X'}
               </button>
             </div>
