@@ -6,7 +6,7 @@ class Square extends React.Component {
         const square = this.props.value === '#' ? "square fill" : "square";
         return (
             <button className = {square} disabled = {isDisabled} onClick = {() => this.props.onClickSquare()}>
-                {this.props.value === "X" ? "X" : null}
+                {this.props.value === "X" && !isDisabled ? "X" : null}
             </button>
         );
     }

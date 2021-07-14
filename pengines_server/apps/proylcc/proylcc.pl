@@ -132,17 +132,20 @@ generarPosibilidad(Fila,[PistaActual|Resto]):- espaciar(Fila,FilaAux),
                                                generarPosibilidad(FilaConPistayEspacio,Resto).
 
 %Los siguientes tres predicados se encargan de generar distintas combinaciones dentro de la fila dada.
+%Agrega a la fila un secuencia de '#' correspondientes a la pista.
 agregarPista(Linea,Linea, 0).
 agregarPista(["#"|Linea], RestoLinea, N):-N > 0,S is N - 1,
                                           agregarPista(Linea, RestoLinea, S).
 
+%Genera dentro de nuestra fila un serie de espacios indeterminados.
 espaciar(Linea, Linea).
 espaciar(["X"|Linea],RestoLinea) :- espaciar(Linea, RestoLinea).
+
+%Agrega un espacio individual dentro de nuestra fila luego de haber agregado una pista.
+agregarEspacio(["X"|T],T).
 
 %Determina la longitud de una lista.
 %Idealmente recibe: Una lista.
 %Salida esperada: La longitud de una lista.
 longitud([],R):- R is -1.
 longitud([_H|T],R):- longitud(T,Raux), R is Raux + 1.
-
-agregarEspacio(["X"|T],T).
